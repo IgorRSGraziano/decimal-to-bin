@@ -48,10 +48,34 @@ void bin2dec(int number)
     cout << "\n";
 }
 
+bool arg_valid(char *arg)
+{
+    // Validate if are number
+    bool valid = true;
+    for (int i = 0; i < strlen(arg); i++)
+    {
+        if (!isdigit(arg[i]))
+        {
+            valid = false;
+            break;
+        }
+    }
+
+    return valid;
+}
+
 void _run(int argc, char **argv)
 {
     if (argc > 2)
     {
+
+        if (!arg_valid(argv[2]))
+        {
+            cout << "Invalid input, need me number!"
+                 << "\n";
+            return;
+        };
+
         string param = argv[1];
         int value = stoi(argv[2]);
         if (param == "-h" || param == "--help")
