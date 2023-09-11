@@ -34,6 +34,18 @@ void dec2bin(int number)
 
 void bin2dec(int number)
 {
+    int lastValue = {0}, dec = {0}, base = {1};
+
+    while (number)
+    {
+        lastValue = number % 10;
+        number /= 10;
+        dec += lastValue * base;
+        base *= 2;
+    }
+
+    cout << dec;
+    cout << "\n";
 }
 
 void _run(int argc, char **argv)
@@ -50,7 +62,7 @@ void _run(int argc, char **argv)
         {
             dec2bin(value);
         }
-        else if (param == "-c2d" || param == "--bin2dec")
+        else if (param == "-b2d" || param == "--bin2dec")
         {
             bin2dec(value);
         }
